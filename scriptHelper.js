@@ -10,8 +10,6 @@
 // 5. Fetch some planetary JSON to update the mission destination with vital facts and figures about where the shuttle is headed.
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-    // Here is the HTML formatting for our mission target div.
- //    addDestinationInfo() does not need to return anything.
     let destinationInfo = document.getElementById("missionTarget");
     destinationInfo.innerHTML = `
     <h2>Mission Destination</h2>

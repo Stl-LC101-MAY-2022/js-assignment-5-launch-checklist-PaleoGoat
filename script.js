@@ -25,8 +25,7 @@ window.addEventListener("load", function() {
        const fuelLevelInput = document.querySelector("input[name=fuelLevel]").value.trim();
        const cargoMassInput = document.querySelector("input[name=cargoMass]").value.trim();
     //    const list = document.getElementById("faultyItems");
-       let redFlags = formSubmission(document, list, pilotNameInput, coPilotNameInput, fuelLevelInput, cargoMassInput) // add back in: document, list, 
-       console.log(redFlags);
+       let redFlags = formSubmission(document, list, pilotNameInput, coPilotNameInput, fuelLevelInput, cargoMassInput)
 
        if (redFlags.length > 0) {
            console.log('Houston, we have a problem!')
