@@ -1,3 +1,4 @@
+require('isomorphic-fetch');
 // import fetch from "node-fetch";
 // globalThis.fetch = fetch
 // // Write your JavaScript code here!
