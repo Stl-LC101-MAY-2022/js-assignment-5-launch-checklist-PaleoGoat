@@ -110,7 +110,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         document.getElementById("launchStatus").style.color = "rgb(65, 159, 106)";
     };
 // return array red flagging failed prelaunch checks
-    console.log(failedPrelaunchChecks);
+    // console.log(failedPrelaunchChecks);
     return failedPrelaunchChecks;
 }
 
