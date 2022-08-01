@@ -1,5 +1,5 @@
-import fetch from "node-fetch";
-globalThis.fetch = fetch
+// import fetch from "node-fetch";
+// globalThis.fetch = fetch
 // Write your helper functions here!
 // 1. Use preventDefault() to prevent a request from being sent out and the page reloading.
 // 2. Validate the user-submitted data to ensure the following:

@@ -1,5 +1,5 @@
-import fetch from "node-fetch";
-globalThis.fetch = fetch
+// import fetch from "node-fetch";
+// globalThis.fetch = fetch
 // // Write your JavaScript code here!
 
 // vital information: the pilot's name, the co-pilot's name, the fuel levels, and the mass of the cargo.
