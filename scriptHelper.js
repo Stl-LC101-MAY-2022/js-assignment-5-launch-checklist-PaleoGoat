@@ -7,13 +7,6 @@
 // 4. Indicate what is good or bad about the shuttle and whether it is ready for launch by using the DOM to update the CSS.
 // 5. Fetch some planetary JSON to update the mission destination with vital facts and figures about where the shuttle is headed.
 
-// From 25.29.2
-//  window.addEventListener("load", function() {
-//     let form = document.querySelector("form");
-//     form.addEventListener("submit", function(event) {
-//        alert("submit clicked");
-//     });
-
 
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
@@ -31,17 +24,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  </ol>
                  <img src="${imageUrl}">
     `
-    /*
-                 <h2>Mission Destination</h2>
-                 <ol>
-                     <li>Name: </li>
-                     <li>Diameter: </li>
-                     <li>Star: ${star}</li>
-                     <li>Distance from Earth: </li>
-                     <li>Number of Moons: </li>
-                 </ol>
-                 <img src="">
-    */
  }
 
 
@@ -49,25 +31,24 @@ function validateInput(testInput) {
     // take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number" as appropriate.
     if (testInput === '') {
         return 'Empty';
-    }
+    };
     
     if (isNaN(testInput)) {
         return 'Not a Number';
-    }
+    };
     
     if (!isNaN(testInput)) {
         return 'Is a Number';
-    }
+    };
 }
 
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    // use validateInput() to complete the formSubmission() function
-    // formSubmission() will take in a document parameter and strings representing the pilot, co-pilot, fuel level, and cargo mass. 
     let failedPrelaunchChecks = [];
 
     if (validateInput(pilot) === 'Empty'|| validateInput(copilot) === 'Empty'|| validateInput(fuelLevel) === 'Empty'|| validateInput(cargoLevel) === 'Empty') {
         failedPrelaunchChecks.push('Empty Field');
+        alert('All fields are required')
         list.style.visibility = 'visible';
     } else {
         // list.style.visibility = 'hidden';
@@ -77,6 +58,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     if (validateInput(pilot) === 'Is a Number') {
         document.getElementById("pilotStatus").innerHTML = `Pilot name can\'t be a number`;
         failedPrelaunchChecks.push(`Pilot name can\'t be a number`);
+        alert('Pilot name can\'t be a number')
         list.style.visibility = 'visible';
     } else {
         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
@@ -86,6 +68,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     if (validateInput(copilot) === 'Is a Number') {
         document.getElementById("copilotStatus").innerHTML = `Co-pilot name can\'t be a number`;
         failedPrelaunchChecks.push(`Co-pilot name can\'t be a number`);
+        alert('Co-pilot name can\'t be a number')
         list.style.visibility = 'visible';
     } else {
         document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
@@ -95,10 +78,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 // Number fields prelaunch check
     if (validateInput(fuelLevel) === 'Not a Number' || validateInput(cargoLevel) === 'Not a Number') {
         failedPrelaunchChecks.push('Names in a numbers field');
+        alert('You cannot enter names in a numbers field')
         list.style.visibility = 'visible';
-    } else {
-        // list.style.visibility = 'hidden';
-    }
+    } 
+    // else {
+    //     // list.style.visibility = 'hidden';
+    // }
     
     if (Number(fuelLevel) < 10000) {
         document.getElementById("fuelStatus").innerHTML = `Fuel level too low for launch`;
@@ -122,16 +107,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         // list.style.visibility = 'hidden';
     }
 
-    // if (Number(fuelLevel) < 10000) {
-    //     fuelFail();
-    //     failedPrelaunchChecks.push('Low Fuel');
-    // };
-    
-    // if (Number(cargoLevel) > 10000) {
-    //     cargoFail();
-    //     failedPrelaunchChecks.push('Too much cargo');
-    // } 
-    
     if (failedPrelaunchChecks.length === 0) {
         document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
         document.getElementById("launchStatus").style.color = "rgb(65, 159, 106)";
@@ -142,6 +117,13 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 }
 
 
+async function myFetch() {
+    let planetsReturned;
+    planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json').then( function(response) {
+        return response.json();
+    });
+    return planetsReturned;
+}
 
 
 function pickPlanet(planets) {
@@ -151,21 +133,8 @@ function pickPlanet(planets) {
     howAboutHere = Math.floor(Math.random()*planets.length);
     return planets[howAboutHere];
 }
-// console.log(pickPlanet(myFetch().then(function (result){return console.log(result)})));
-// console.log(pickPlanet(myFetch()));
-
-async function myFetch() {
-    let planetsReturned;
-    planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json').then( function(response) {
-        return response.json();
-    });
-    planetsReturned = pickPlanet(planetsReturned);
-    return planetsReturned;
-}
-
-
-// module.exports.addDestinationInfo = addDestinationInfo;
-// module.exports.validateInput = validateInput;
-// module.exports.formSubmission = formSubmission;
-// module.exports.pickPlanet = pickPlanet; 
-// module.exports.myFetch = myFetch;
+module.exports.addDestinationInfo = addDestinationInfo;
+module.exports.validateInput = validateInput;
+module.exports.formSubmission = formSubmission;
+module.exports.pickPlanet = pickPlanet; 
+module.exports.myFetch = myFetch;

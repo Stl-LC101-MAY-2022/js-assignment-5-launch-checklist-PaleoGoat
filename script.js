@@ -1,5 +1,17 @@
 // // Write your JavaScript code here!
-//Test 3 - ran: npm install --location=global npm@8.15.1
+
+// vital information: the pilot's name, the co-pilot's name, the fuel levels, and the mass of the cargo.
+// All we need to do is use validation to ensure that we have all of the info for the space shuttle program and make sure no one prematurely launches the shuttle
+
+// 1. Use preventDefault() to prevent a request from being sent out and the page reloading.
+// 2. Validate the user-submitted data to ensure the following:
+//      a. The user entered something for every field.
+//      b. The user entered text for names and numbers for fuel and cargo levels.
+// 3. With validation, update a list of what is currently ready or not ready for the shuttle launch.
+// 4. Indicate what is good or bad about the shuttle and whether it is ready for launch by using the DOM to update the CSS.
+// 5. Fetch some planetary JSON to update the mission destination with vital facts and figures about where the shuttle is headed.
+
+
 
 window.addEventListener("load", function() {
     const list = document.getElementById("faultyItems");
@@ -24,6 +36,7 @@ window.addEventListener("load", function() {
            event.preventDefault();
        }
   }); 
+  console.log('test');
 
     let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
@@ -34,7 +47,8 @@ window.addEventListener("load", function() {
    }).then(function () {
        console.log(listedPlanets);
        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-    //    let destination = pickPlanet(listedPlanets);
-       addDestinationInfo(document, listedPlanets.name, listedPlanets.diameter, listedPlanets.star, listedPlanets.distance, listedPlanets.moons, listedPlanets.image)    
+       let destination = pickPlanet(listedPlanets);
+       console.log(destination.image);
+       addDestinationInfo(document, destination.name, destination.diameter, destination.star, destination.distance, destination.moons, destination.image)
    })
 });
