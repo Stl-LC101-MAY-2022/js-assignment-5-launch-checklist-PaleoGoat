@@ -1,4 +1,5 @@
 // // Write your JavaScript code here!
+//Test 3 - ran: npm install --location=global npm@8.15.1
 
 window.addEventListener("load", function() {
     const list = document.getElementById("faultyItems");
