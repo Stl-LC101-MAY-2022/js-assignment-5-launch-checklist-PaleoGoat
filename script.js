@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+globalThis.fetch = fetch
 // // Write your JavaScript code here!
 
 // vital information: the pilot's name, the co-pilot's name, the fuel levels, and the mass of the cargo.
@@ -10,9 +12,8 @@
 // 3. With validation, update a list of what is currently ready or not ready for the shuttle launch.
 // 4. Indicate what is good or bad about the shuttle and whether it is ready for launch by using the DOM to update the CSS.
 // 5. Fetch some planetary JSON to update the mission destination with vital facts and figures about where the shuttle is headed.
-import fetch from "node-fetch";
-globalThis.fetch = fetch
 
+//is this working?
 
 window.addEventListener("load", function() {
     const list = document.getElementById("faultyItems");
