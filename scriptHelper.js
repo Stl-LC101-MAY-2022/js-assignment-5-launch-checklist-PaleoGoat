@@ -60,33 +60,6 @@ function validateInput(testInput) {
     }
 }
 
-console.log(validateInput("")==="Empty");
-console.log(validateInput("asdf")==="Not a Number");
-console.log(validateInput("10")==="Is a Number");
-// it ("Function properly validates text", function() {
-//     expect(studentFunctions.validateInput("")).toEqual("Empty");
-//     expect(studentFunctions.validateInput("asdf")).toEqual("Not a Number");
-//     expect(studentFunctions.validateInput("10")).toEqual("Is a Number");
-//  })
-// All come back as true.
-// Jasmine is a dirty liar!
-
-
-// function fuelFail() {
-//     document.getElementById("fuelStatus").innerHTML = `Fuel level too low for launch`;
-//     document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
-//     document.getElementById("launchStatus").style.color = "red";
-//     document.getElementById("faultyItems").style.visibility = "visible";
-// }
-
-
-// function cargoFail() {
-//     document.getElementById("cargoStatus").innerHTML = `Cargo mass too high for launch`;
-//     document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
-//     document.getElementById("launchStatus").style.color = "red";
-//     document.getElementById("faultyItems").style.visibility = "visible";
-// }
-
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     // use validateInput() to complete the formSubmission() function
@@ -169,14 +142,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 }
 
 
-async function myFetch() {
-    let planetsReturned;
-    planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json').then( function(response) {
-        return response.json();
-    });
-    return planetsReturned;
-}
-// maybe
+
 
 function pickPlanet(planets) {
     // pickPlanet() takes in one argument: a list of planets. Using Math.random(), 
@@ -185,6 +151,19 @@ function pickPlanet(planets) {
     howAboutHere = Math.floor(Math.random()*planets.length);
     return planets[howAboutHere];
 }
+// console.log(pickPlanet(myFetch().then(function (result){return console.log(result)})));
+// console.log(pickPlanet(myFetch()));
+
+async function myFetch() {
+    let planetsReturned;
+    planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json').then( function(response) {
+        return response.json();
+    });
+    planetsReturned = pickPlanet(planetsReturned);
+    return planetsReturned;
+}
+
+
 // module.exports.addDestinationInfo = addDestinationInfo;
 // module.exports.validateInput = validateInput;
 // module.exports.formSubmission = formSubmission;
