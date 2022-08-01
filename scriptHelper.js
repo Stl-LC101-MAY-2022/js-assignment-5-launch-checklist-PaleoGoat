@@ -176,7 +176,7 @@ async function myFetch() {
     });
     return planetsReturned;
 }
-
+// maybe
 
 function pickPlanet(planets) {
     // pickPlanet() takes in one argument: a list of planets. Using Math.random(), 
