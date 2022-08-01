@@ -6,7 +6,7 @@
 // 3. With validation, update a list of what is currently ready or not ready for the shuttle launch.
 // 4. Indicate what is good or bad about the shuttle and whether it is ready for launch by using the DOM to update the CSS.
 // 5. Fetch some planetary JSON to update the mission destination with vital facts and figures about where the shuttle is headed.
-
+const fetch = require('node-fetch')
 
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
