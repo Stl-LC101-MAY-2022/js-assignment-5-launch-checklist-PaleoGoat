@@ -1,8 +1,5 @@
 // // Write your JavaScript code here!
 
-// vital information: the pilot's name, the co-pilot's name, the fuel levels, and the mass of the cargo.
-// All we need to do is use validation to ensure that we have all of the info for the space shuttle program and make sure no one prematurely launches the shuttle
-
 // 1. Use preventDefault() to prevent a request from being sent out and the page reloading.
 // 2. Validate the user-submitted data to ensure the following:
 //      a. The user entered something for every field.
